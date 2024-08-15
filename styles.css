@@ -1,36 +1,40 @@
-/* Базовые стили */
+/* Основные стили */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #1c1c1c;
+    color: #f4f4f4;
 }
 
-/* Стили для заголовка */
+/* Заголовок */
 header {
-    background-color: #333;
+    background-color: #4B0082;
     color: white;
     padding: 15px 0;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 header .logo {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
 header nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 header nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
@@ -40,105 +44,174 @@ header nav ul li a {
     font-weight: bold;
 }
 
-/* Hero секция */
-#hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-}
-
-#hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-#hero p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-.cta-button {
-    background-color: #ff5733;
+.login-button {
+    background-color: #6A0DAD;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
-    font-weight: bold;
     border-radius: 5px;
 }
 
+.login-button:hover {
+    background-color: #7D26CD;
+}
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(45deg, #4B0082, #7B68EE);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    background-image: url('path-to-your-background-image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+#hero p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.cta-button, .details-button {
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.cta-button {
+    background-color: #9370DB;
+    color: white;
+}
+
+.details-button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
 .cta-button:hover {
-    background-color: #ff7043;
+    background-color: #8A2BE2;
+}
+
+.details-button:hover {
+    background-color: white;
+    color: #4B0082;
 }
 
 /* Стили для секций */
-section {
+#features {
     padding: 60px 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-section h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
     text-align: center;
+    background-color: #2c2c2c;
 }
 
-section p, section ul {
-    font-size: 1.2em;
+#features h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
 }
 
-section ul {
-    list-style-type: none;
-    padding: 0;
+.feature-box {
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #3c3c3c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-section ul li {
+.feature-box h3 {
+    font-size: 1.8em;
     margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 1.2em;
 }
 
 /* Footer стили */
 footer {
-    background-color: #333;
+    background-color: #4B0082;
     color: white;
     text-align: center;
     padding: 20px 0;
+    margin-top: 20px;
 }
 
-footer .social-links {
+.social-links {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
-footer .social-links li {
-    display: inline;
+.social-links li {
     margin: 0 10px;
 }
 
-footer .social-links li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.social-links li a {
+    display: inline-block;
 }
+
+.social-links li a img.icon {
+    width: 25px; /* Новый размер иконки */
+    height: 25px;
+}
+
 
 footer .social-links li a:hover {
-    color: #ff5733;
+    color: #9370DB;
+}
+
+#hero {
+    background: linear-gradient(45deg, #4B0082, #7B68EE),
+                url('0d8d04d0-7575-4944-9934-bb975c52a0ec.png') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    background-size: cover;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 40px; /* Размер значка, можно изменить по вашему желанию */
+    height: auto;
+    margin-right: 10px; /* Отступ между значком и текстом */
 }
 
 
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9370DB;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-@media (max-width: 768px) {
-    header nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
+.cta-button .icon {
+    width: 25px;
+    height: 20px;
+    margin-left: 10px; /* Отступ между текстом и иконкой */
+}
 
-    #hero h1 {
-        font-size: 2em;
-    }
-
-    #hero p {
-        font-size: 1em;
-    }
+.cta-button:hover {
+    background-color: #8A2BE2;
 }
