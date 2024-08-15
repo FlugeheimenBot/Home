@@ -1,80 +1,70 @@
 const express = require('express');
-const axios = require('axios');
 const session = require('express-session');
-require('dotenv').config();
+const axios = require('axios');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
+// Настройка сессий
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'your_secret_key',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
 }));
 
-app.get('/', (req, res) => {
-    if (req.session.user) {
-        res.send(`<h1>Привет, ${req.session.user.username}</h1>
-                  <a href="/logout">Выйти</a>
-                  <a href="/dashboard">Перейти к панели управления ботом</a>`);
-    } else {
-        res.send('<a href="/login">Войти через Discord</a>');
-    }
-});
-
+// Маршрут для входа в Discord
 app.get('/login', (req, res) => {
-    const redirectUri = `https://discord.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.DISCORD_REDIRECT_URI)}&response_type=code&scope=identify guilds bot applications.commands`;
+    const redirectUri = `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&response_type=code&scope=identify`;
     res.redirect(redirectUri);
 });
 
+// Маршрут для обработки обратного вызова
 app.get('/callback', async (req, res) => {
     const code = req.query.code;
-    if (!code) return res.redirect('/');
+
+    if (!code) return res.send('No code provided');
 
     try {
-        const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', null, {
-            params: {
-                client_id: process.env.DISCORD_CLIENT_ID,
-                client_secret: process.env.DISCORD_CLIENT_SECRET,
-                grant_type: 'authorization_code',
-                code: code,
-                redirect_uri: process.env.DISCORD_REDIRECT_URI,
-            },
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
+        const data = {
+            client_id: process.env.CLIENT_ID,
+            client_secret: process.env.CLIENT_SECRET,
+            grant_type: 'authorization_code',
+            redirect_uri: process.env.REDIRECT_URI,
+            code,
+            scope: 'identify',
+        };
+
+        const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams(data), {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
 
+        const accessToken = tokenResponse.data.access_token;
+
         const userResponse = await axios.get('https://discord.com/api/users/@me', {
-            headers: {
-                Authorization: `Bearer ${tokenResponse.data.access_token}`,
-            },
+            headers: { Authorization: `Bearer ${accessToken}` }
         });
 
         req.session.user = userResponse.data;
         res.redirect('/');
     } catch (error) {
         console.error(error);
-        res.redirect('/');
+        res.send('Error occurred during authentication');
     }
 });
 
-app.get('/dashboard', (req, res) => {
-    if (!req.session.user) {
-        return res.redirect('/');
+// Главная страница
+app.get('/', (req, res) => {
+    if (req.session.user) {
+        res.send(`
+            <h1>Добро пожаловать, ${req.session.user.username}</h1>
+            <img src="https://cdn.discordapp.com/avatars/${req.session.user.id}/${req.session.user.avatar}.png" alt="avatar" width="80">
+        `);
+    } else {
+        res.send('<a href="/login">Войти с Discord</a>');
     }
-
-    // Здесь вы можете отобразить интерфейс для управления ботом
-    res.send(`<h1>Панель управления ботом</h1>
-              <p>Управляйте своим ботом здесь.</p>
-              <a href="/logout">Выйти</a>`);
 });
 
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-});
-
-app.listen(port, () => {
-    console.log(`Сервер запущен на http://localhost:${port}`);
-});
+app.listen(PORT, () => console.log(`Сервер запущен на https://flugeheimenbot.github.io/Home/`));
