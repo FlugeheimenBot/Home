@@ -1,70 +1,85 @@
 const express = require('express');
 const session = require('express-session');
 const axios = require('axios');
-const dotenv = require('dotenv');
-
-dotenv.config();
-
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Настройка сессий
 app.use(session({
-    secret: 'your_secret_key',
+    secret: 'some-secret-key',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true
 }));
 
-// Маршрут для входа в Discord
-app.get('/login', (req, res) => {
-    const redirectUri = `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&response_type=code&scope=identify`;
-    res.redirect(redirectUri);
-});
-
-// Маршрут для обработки обратного вызова
-app.get('/callback', async (req, res) => {
-    const code = req.query.code;
-
-    if (!code) return res.send('No code provided');
-
-    try {
-        const data = {
-            client_id: process.env.CLIENT_ID,
-            client_secret: process.env.CLIENT_SECRET,
-            grant_type: 'authorization_code',
-            redirect_uri: process.env.REDIRECT_URI,
-            code,
-            scope: 'identify',
-        };
-
-        const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams(data), {
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        });
-
-        const accessToken = tokenResponse.data.access_token;
-
-        const userResponse = await axios.get('https://discord.com/api/users/@me', {
-            headers: { Authorization: `Bearer ${accessToken}` }
-        });
-
-        req.session.user = userResponse.data;
-        res.redirect('/');
-    } catch (error) {
-        console.error(error);
-        res.send('Error occurred during authentication');
-    }
-});
+const CLIENT_ID = 'YOUR_CLIENT_ID';
+const CLIENT_SECRET = 'YOUR_CLIENT_SECRET';
+const REDIRECT_URI = 'https://my-vercel-project-phmj76mim-flugeheimens-projects.vercel.app/callback';
 
 // Главная страница
 app.get('/', (req, res) => {
     if (req.session.user) {
-        res.send(`
-            <h1>Добро пожаловать, ${req.session.user.username}</h1>
-            <img src="https://cdn.discordapp.com/avatars/${req.session.user.id}/${req.session.user.avatar}.png" alt="avatar" width="80">
-        `);
+        res.send(`<h1>Hello, ${req.session.user.username}!</h1><img src="${req.session.user.avatar}" alt="Avatar" /><br><a href="/logout">Logout</a>`);
     } else {
-        res.send('<a href="/login">Войти с Discord</a>');
+        res.send('<h1>Welcome to Flugeheimen Bot</h1><a href="/login">Login with Discord</a>');
     }
 });
 
-app.listen(PORT, () => console.log(`Сервер запущен на http://localhost:${PORT}`));
+// Маршрут для аутентификации
+app.get('/login', (req, res) => {
+    const authorizeUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
+    res.redirect(authorizeUrl);
+});
+
+// Обработка редиректа от Discord
+app.get('/callback', async (req, res) => {
+    const code = req.query.code;
+    if (!code) {
+        return res.redirect('/');
+    }
+
+    try {
+        // Обмен кода на токен
+        const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
+            client_id: CLIENT_ID,
+            client_secret: CLIENT_SECRET,
+            grant_type: 'authorization_code',
+            code: code,
+            redirect_uri: REDIRECT_URI
+        }).toString(), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+
+        const accessToken = tokenResponse.data.access_token;
+
+        // Получение данных о пользователе
+        const userResponse = await axios.get('https://discord.com/api/users/@me', {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+
+        const user = userResponse.data;
+
+        // Сохранение данных о пользователе в сессии
+        req.session.user = {
+            username: user.username,
+            avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+        };
+
+        res.redirect('/');
+    } catch (error) {
+        console.error('Ошибка аутентификации:', error);
+        res.redirect('/');
+    }
+});
+
+// Маршрут для выхода
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
+});
