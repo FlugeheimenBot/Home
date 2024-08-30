@@ -55,6 +55,16 @@
         <li><a href="https://vk.com" target="_blank"><img src="vk-social-network-logo_icon-icons.png" alt="VK" class="icon"></a></li>
         <li><a href="https://Telegram.com" target="_blank"><img src="telegram_icon_131945.png" alt="Telegram" class="icon"></a></li>
     	</ul>
+<button onclick="login()">Войти</button>
+
+<script>
+async function login() {
+    const response = await fetch('/api/login');
+    const data = await response.json();
+    alert(data.message);
+}
+</script>
+
 </footer>
 <script src="script.js"></script>
 </body>
