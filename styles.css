@@ -1,217 +1,268 @@
-/* Основные стили */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1c1c1c;
-    color: #f4f4f4;
-}
-
-/* Заголовок */
-header {
-    background-color: #4B0082;
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: url('neonovaia-luna-1.webp');
+    background-size: 100%;
+    background-attachment: fixed;
+    color: #fcfcfc;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 0 20px;
 }
 
-header .logo {
-    font-size: 1.8em;
+.navbar {
+  width: 100%;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Центрирование элементов по вертикали */
+  padding: 5px 10px;
+  z-index: 1000;
+}
+
+.menu {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1px 0; /* Уменьшили отступы, чтобы уменьшить высоту */
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 10px; /* Уменьшили отступы внутри элементов меню */
+  font-size:30px; /* Можно уменьшить шрифт для компактности */
+}
+
+.menu a:hover {
+  background-color: #555;
+  border-radius: 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Центрирование логотипа */
+}
+
+.logo img {
+  max-width: 50px; /* Ограничиваем максимальную ширину логотипа */
+  max-height: 50px; /* Ограничиваем максимальную высоту логотипа */
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+}
+
+.logo span {
+  color: white;
+  font-size: 25px;
+}
+
+.gradient-text {
+  font-size: 35px; /* Размер шрифта для текста с градиентом */
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffffff,#7265E3);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 3s ease infinite;
+}
+
+/* Анимация градиента */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.loool {
+  color: white;
+  font-size: 35px;
+  align-items: center;
+}
+
+.buttons .btn-primary, .buttons .btn-secondary {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 5px;
     font-weight: bold;
 }
 
-header nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.buttons .btn-primary {
+    background-color: #7265E3;
+    margin-right: 15px;
+}
+
+.buttons .btn-secondary {
+    background-color: #ffffff;
+}
+
+.features {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 1570px;
+    padding: 50px;
 }
 
-header nav ul li {
-    margin: 0 15px;
-}
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
 
-.login-button {
-    background-color: #6A0DAD;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.login-button:hover {
-    background-color: #7D26CD;
-}
-
-/* Hero Section */
-#hero {
-    background: linear-gradient(45deg, #4B0082, #7B68EE);
-    color: white;
+.feature {
+    background: linear-gradient(175deg, #ffffff,#7265E3); /* Градиентный фон */
+    padding: 30px;
+    border-radius: 10px;
+    flex: 1 1 300px;
     text-align: center;
-    padding: 100px 20px;
-    background-image: url('path-to-your-background-image.jpg');
-    background-size: cover;
-    background-position: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
 }
 
-#hero h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+.feature h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    background: linear-gradient(175deg, #ffffff,#7265E3); /* Градиент для текста */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-#hero p {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+.feature p {
+    font-size: 1.2em;
+    color: #f0f0f0;
 }
 
-.cta-button, .details-button {
-    padding: 15px 30px;
-    text-decoration: none;
+.stats-section {
+    background: linear-gradient(175deg, #ffffff, #7265E3); /* Используем background для градиента */
+    max-width: 1500px; /* Ширина контейнера */
+    margin: 50px auto; /* Центрирование контейнера */
+    padding: 30px; /* Внутренний отступ */
+    border-radius: 15px; /* Скругление углов */
+}
+
+h1 {
+    font-size: 36px; /* Размер заголовка */
+    margin-bottom: 30px;
+    line-height: 1.5; /* Высота строк для разделения текста */
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ffffff,#7265E3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.servers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Сетка из 3 колонок */
+    gap: 20px; /* Отступы между серверными блоками */
+}
+
+.server-item {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.server-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.server-item p {
+    font-size: 18px;
     font-weight: bold;
-    border-radius: 5px;
-    margin: 10px;
+    flex-grow: 1;
+}
+
+.server-item span {
+    font-size: 16px;
+    color: #888;
+}
+
+.adventure-section {
+    width: 1500px; /* Увеличиваем ширину до 900px */
+    margin: 50px auto; /* Центрирование и добавление отступа сверху и снизу */
+    padding: 40px; /* Увеличиваем внутренний отступ */
+    background: linear-gradient(175deg, #ffffff, #7265E3); /* Цвет фона секции */
+    border-radius: 15px; /* Скругление углов */
+}
+
+h1 {
+    font-size: 32px; /* Увеличиваем размер заголовка */
+    margin-bottom: 30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Расстояние между кнопками */
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
     display: inline-block;
 }
 
-.cta-button {
-    background-color: #9370DB;
+.primary-btn {
+    background-color: #7265E3; /* Цвет фиолетовой кнопки */
     color: white;
+    border: none;
 }
 
-.details-button {
-    background-color: transparent;
+.secondary-btn {
+    background-color: #333;
     color: white;
     border: 2px solid white;
 }
 
-.cta-button:hover {
-    background-color: #8A2BE2;
+.btn:hover {
+    opacity: 0.8;
 }
 
-.details-button:hover {
-    background-color: white;
-    color: #4B0082;
-}
-
-/* Стили для секций */
-#features {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #2c2c2c;
-}
-
-#features h2 {
-    font-size: 2.5em;
-    margin-bottom: 40px;
-}
-
-.feature-box {
-    margin: 20px auto;
-    max-width: 500px;
-    padding: 20px;
-    background-color: #3c3c3c;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.feature-box h3 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-}
-
-.feature-box p {
-    font-size: 1.2em;
-}
-
-/* Footer стили */
 footer {
-    background-color: #4B0082;
+    background-color: #333;
     color: white;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
+    padding: 10px;
+    position: relative; /* Измените с fixed на relative или static */
+    width: 100%;
+    bottom: 0;
 }
+
 
 .social-links {
     list-style-type: none;
     padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+    margin: 10px 0 0;
 }
 
 .social-links li {
+    display: inline;
     margin: 0 10px;
 }
 
 .social-links li a {
-    display: inline-block;
-}
-
-.social-links li a img.icon {
-    width: 25px; /* Новый размер иконки */
-    height: 25px;
-}
-
-
-footer .social-links li a:hover {
-    color: #9370DB;
-}
-
-#hero {
-    background: linear-gradient(45deg, #4B0082, #7B68EE),
-                url('0d8d04d0-7575-4944-9934-bb975c52a0ec.png') no-repeat center center/cover;
     color: white;
-    text-align: center;
-    padding: 100px 20px;
-    background-size: cover;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo-icon {
-    width: 40px; /* Размер значка, можно изменить по вашему желанию */
-    height: auto;
-    margin-right: 10px; /* Отступ между значком и текстом */
-}
-
-
-.cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #9370DB;
-    color: white;
-    padding: 15px 30px;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button .icon {
-    width: 25px;
-    height: 20px;
-    margin-left: 10px; /* Отступ между текстом и иконкой */
-}
-
-.cta-button:hover {
-    background-color: #8A2BE2;
 }
