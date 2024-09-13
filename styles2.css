@@ -1,0 +1,132 @@
+/* Общие стили для страницы */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон для текста */
+    background-image: url('neonovaia-luna-1.webp'); /* Путь к вашему изображению */
+    background-attachment: fixed; /* Фон остается на месте при прокрутке */
+    background-size: cover; /* Изображение занимает всю область */
+    background-position: center; /* Центрируем изображение */
+    line-height: 1.6;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Р¦РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РїРѕ РІРµСЂС‚РёРєР°Р»Рё */
+  padding: 5px 10px;
+  z-index: 1000;
+}
+
+.menu {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1px 0; /* РЈРјРµРЅСЊС€РёР»Рё РѕС‚СЃС‚СѓРїС‹, С‡С‚РѕР±С‹ СѓРјРµРЅСЊС€РёС‚СЊ РІС‹СЃРѕС‚Сѓ */
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 10px; /* РЈРјРµРЅСЊС€РёР»Рё РѕС‚СЃС‚СѓРїС‹ РІРЅСѓС‚СЂРё СЌР»РµРјРµРЅС‚РѕРІ РјРµРЅСЋ */
+  font-size:30px; /* РњРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ С€СЂРёС„С‚ РґР»СЏ РєРѕРјРїР°РєС‚РЅРѕСЃС‚Рё */
+}
+
+.menu a:hover {
+  background-color: #555;
+  border-radius: 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Р¦РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ Р»РѕРіРѕС‚РёРїР° */
+}
+
+.logo img {
+  max-width: 50px; /* РћРіСЂР°РЅРёС‡РёРІР°РµРј РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ С€РёСЂРёРЅСѓ Р»РѕРіРѕС‚РёРїР° */
+  max-height: 50px; /* РћРіСЂР°РЅРёС‡РёРІР°РµРј РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ РІС‹СЃРѕС‚Сѓ Р»РѕРіРѕС‚РёРїР° */
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+}
+
+.logo span {
+  color: white;
+  font-size: 25px;
+}
+
+.logo:hover {
+    opacity: 0.8; /* Добавляем эффект при наведении */
+}
+
+
+nav {
+    flex: 2; /* Р¦РµРЅС‚СЂРёСЂСѓРµС‚ РјРµРЅСЋ */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Р¦РµРЅС‚СЂРѕРІРєР° СЌР»РµРјРµРЅС‚РѕРІ РјРµРЅСЋ */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #4B0082;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative; /* РР·РјРµРЅРёС‚Рµ СЃ fixed РЅР° relative РёР»Рё static */
+    width: 100%;
+    bottom: 0;
+}
+
+
+.social-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.social-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.social-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
