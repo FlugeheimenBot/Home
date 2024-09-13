@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flugeheimen Bot - Документация</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+	<header class="navbar">
+		<!-- Логотип и название -->
+		<a href="https://flugeheimenbot.github.io/Home/" class="logo">
+			<div>
+				<img src="Remove-bg.ai_1725634825190.png" alt="Logo Image" class="img">
+				<span>Flugeheimen Bot</span>
+			</div>
+		</a>
+
+		<!-- Меню навигации -->
+		<nav class="menu">
+			<a href="https://discord.gg/9bdGacyDfD">Поддержка</a>
+			<a href="https://flugeheimenbot.github.io/DOCS/">Команды</a>
+			<a href="https://flugeheimenbot.github.io/DOCS/">Документация</a>
+			<a href="#">Flugeheimen Bot Pro</a>
+		</nav>
+	</header>
+
+    <section id="introduction">
+        <h1>Введение</h1>
+        <p>Flugeheimen Bot — это многофункциональный Discord-бот с широким спектром возможностей, включая автоматизацию задач, модерацию и многое другое.</p>
+    </section>
+
+    <section id="installation">
+        <h2>Установка и настройка</h2>
+        <p>Привет друг, если ты читаешь это - значит тебе интересно как установить бота и настроить, я тебе помогу!
+	<h3>Начнём с установки:</h3>
+	<p>Заходишь на наш официальный сайт, листаешь вниз и находишь кнопку"Добавить в дискорд" нажимаешь, выбираешь нужный сервер. 
+	<h3>Первичная настройка:</h3>
+	<ul>
+		<li>/set_bad_words - установи плохие слова - и бот будет за них мутить.</li>
+		<li>/set_welcome_channel - установи канал для приветствий.</li>
+		<li>/set_welcome - установи приветственное сообщение которое будет отправляться в канал который ты установил</li>
+		<li>/set_welcome_dm - установи приветственное сообщение в ЛС и бот будет его отправлять в ЛС.</li>
+		<li>P.S. все приветственные сообщения стоят по умолчанию если их не изменить, также чтобы упомянуть человека в приветственных сообщениях - пропешите {member.mention} Текст приветственного сообщения.</li>
+	</ul>
+    </section>
+
+    <section id="commands">
+        <h2>Команды</h2>
+	<h3>Модерация</h3>
+	<ul>
+    		<li><strong>/ban [пользователь] [причина(не обязательно)]</strong> — Забанить участника (Только для администраторов)</li>
+    		<li><strong>/kick [пользователь] [причина(не обязательно)]</strong> — Кикнуть участника (Только для администраторов)</li>
+    		<li><strong>/mute [пользователь] [причина(не обязательно)]</strong> — Замьютить (Только для администраторов)</li>
+    		<li><strong>/unmute [пользователь]</strong> — Размьютить (Только для администраторов)</li>
+    		<li><strong>/add_adm_role [роль]</strong> — Добавить роль администратора (Только для администраторов)</li>
+    		<li><strong>/unban [пользователь]</strong> — Разбанить участника по ID (Только для администраторов)</li>
+    		<li><strong>/setup_bad_words</strong> — Настроить плохие слова (Только для администраторов)</li>
+    		<li><strong>/send_embed</strong> — Отправить сообщение в виде Эмбеда (Только для администраторов)</li>
+    		<li><strong>/set_auto_role</strong> — Настроить автоматическую роль для новых участников (Только для администраторов)</li>
+	</ul>
+
+	<h3>Экономика</h3>
+	<ul>
+    		<li><strong>/balance</strong> — Ваш баланс</li>
+    		<li><strong>/transfer [пользователь] [сумма]</strong> — Перевести монеты</li>
+	</ul>
+
+	<h3>Магазин ролей</h3>
+	<ul>
+    		<li><strong>/add_role_to_shop [роль]</strong> — Добавляет роль в магазин (Только для администраторов)</li>
+    		<li><strong>/shop</strong> — Магазин ролей</li>
+		</ul>
+
+	<h3>Тикеты</h3>
+	<ul>
+    		<li><strong>/create_ticket</strong> — Создать тикет</li>
+	    	<li><strong>/close_ticket</strong> — Закрыть тикет</li>
+	</ul>
+
+	<h3>Приветствия</h3>
+	<ul>
+    		<li><strong>/set_welcome</strong> — Изменить приветственное сообщение</li>
+    		<li><strong>/set_welcome_dm</strong> — Изменить приветственное сообщение в ЛС</li>
+    		<li><strong>/set_welcome_channel</strong> — Установить канал для приветствий</li>
+	</ul>
+
+	<h3>Развлечения</h3>
+	<ul>
+    		<li><strong>/math [выражение]</strong> — Сложить или вычесть</li>
+    		<li><strong>/create_channel</strong> — Создаёт голосовой канал для создания других голосовых каналов (Только для администраторов)</li>
+		<li><strong>/send_embed</strong> — Отправить сообщение в виде Эмбеда</li>
+	</ul>
+
+    </section>
+
+    <section id="faq">
+        <h2>Часто задаваемые вопросы (FAQ)</h2>
+        <h3>Почему бот не отвечает на команды?</h3>
+        <p>Проверьте префикс, права доступа и состояние бота или обратитесь в Тех. поддержку</p>
+    </section>
+
+    <section id="support">
+        <h2>Поддержка</h2>
+        <p>Для получения дополнительной помощи посетите <a href="https://example.com/support" target="_blank">страницу поддержки</a>.</p>
+    </section>
+
+    <footer>
+        <p>© 2024 Flugeheimen Bot | Все права защищены.</p>
+        <ul class="social-links">
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">VK</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
